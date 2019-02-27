@@ -1,3 +1,7 @@
+/**
+ * @module Blueprint
+ */
+
 import { Adapter } from '../adapters/Adapter';
 import { AdapterBlueprintOptions } from '../adapters/AdapterBlueprintOptions';
 import { EntityObjectType } from '../common/EntityObjectType';
@@ -7,6 +11,13 @@ import { BlueprintDefinitionAfterMethod } from './BlueprintDefinitionAfterMethod
 import { BlueprintDefinitionMethod } from './BlueprintDefinitionMethod';
 import { BlueprintOptions } from './BlueprintTypeOption';
 
+/**
+ * Blueprint is used define the manner in which entities are created.
+ *
+ * @typeparam Entity interface or class that describes the entity to be generated
+ * @typeparam AdapterType implementation of the [[Adapter]] interface
+ * @typeparam Options interface describing the adapter blueprint options being used.
+ */
 export class Blueprint<
     Entity = any,
     AdapterType extends Adapter = Adapter,

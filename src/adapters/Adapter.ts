@@ -1,3 +1,7 @@
+/**
+ * @module Adapters
+ */
+
 import { BlueprintOptions } from '../blueprint/BlueprintTypeOption';
 import { DeepEntityPartial } from '../common/DeepEntityPartial';
 import { AdapterBlueprintOptions } from './AdapterBlueprintOptions';

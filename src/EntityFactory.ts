@@ -1,3 +1,6 @@
+/**
+ * @module EntityFactory
+ */
 import { Adapter } from './adapters/Adapter';
 import { ObjectAdapter } from './adapters/object/ObjectAdapter';
 import { Blueprint } from './blueprint/Blueprint';
@@ -9,15 +12,24 @@ import { EntityFactoryOptions } from './EntityFactoryOptions';
 import { EntityFactoryRegisterCallback } from './EntityFactoryRegisterCallback';
 import { getName, isFunction } from './utils';
 
+/**
+ * EntityFactory is the primary interface for generating entities
+ */
 export class EntityFactory implements EntityFactoryExecutor {
-    private readonly profiles = new Map<string | EntityObjectType<any>, Blueprint<any, any, any>>();
+    /**
+     * Holds a list of registered blueprints
+     */
+    private readonly blueprints = new Map<string | EntityObjectType<any>, Blueprint<any, any, any>>();
 
+    /**
+     * Adapter supplied via the constructor. Defaults to [[ObjectAdapter]]
+     */
     private readonly adapter: Adapter;
 
     /**
      * Create a new EntityFactory
      *
-     * @param options
+     * @param options:
      */
     constructor(private readonly options: EntityFactoryOptions = {}) {
         this.adapter = options.adapter || new ObjectAdapter();
@@ -39,7 +51,7 @@ export class EntityFactory implements EntityFactoryExecutor {
     public for(entity: string): BlueprintBuilder<Record<string, any>>;
     public for<EntityType = any>(entity: string | EntityObjectType<EntityType>): BlueprintBuilder<EntityType>;
     public for<EntityType = any>(entity: EntityObjectType<EntityType> | string): any {
-        const blueprint = this.profiles.get(entity);
+        const blueprint = this.blueprints.get(entity);
         if (!blueprint) {
             throw new Error(`No blueprint exists for entity ${getName(entity)}`);
         }
@@ -53,7 +65,7 @@ export class EntityFactory implements EntityFactoryExecutor {
      * @param entity
      */
     public hasBlueprint(entity: EntityObjectType<any> | string): boolean {
-        return this.profiles.has(entity);
+        return this.blueprints.has(entity);
     }
 
     /**
@@ -64,7 +76,7 @@ export class EntityFactory implements EntityFactoryExecutor {
     public getProfile(entity: string): Blueprint<Record<string, any>, any, any>;
     public getProfile<Entity>(entity: string | EntityObjectType<Entity>): Blueprint<Entity, any, any>;
     public getProfile<Entity = Record<string, any>>(entity: EntityObjectType<Entity> | string): any {
-        return this.profiles.get(entity);
+        return this.blueprints.get(entity);
     }
 
     public register(fixture: Blueprint<any, any, any> | EntityFactoryRegisterCallback): EntityFactory {
@@ -73,13 +85,13 @@ export class EntityFactory implements EntityFactoryExecutor {
         if (fixture instanceof Blueprint) {
             profile = fixture;
 
-            this.profiles.set(profile.getType(), profile);
+            this.blueprints.set(profile.getType(), profile);
         } else if (isFunction(fixture)) {
             profile = new Blueprint<any, any, any>();
 
             fixture(profile);
 
-            this.profiles.set(profile.getType(), profile);
+            this.blueprints.set(profile.getType(), profile);
         }
 
         return this;

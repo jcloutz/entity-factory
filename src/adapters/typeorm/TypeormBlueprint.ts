@@ -1,3 +1,7 @@
+/**
+ * @module Adapters/Typeorm
+ */
+
 import { Blueprint } from '../../blueprint/Blueprint';
 import { TypeormAdapter } from './TypeormAdapter';
 import { TypeormBlueprintOptions } from './TypeormBlueprintOptions';

@@ -1,4 +1,9 @@
+/**
+ * @module Blueprint
+ */
+
 import FakerStatic = Faker.FakerStatic;
+
 import { BlueprintDeepPartial } from './BlueprintDeepPartial';
 
 /**

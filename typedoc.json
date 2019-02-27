@@ -1,0 +1,20 @@
+{
+    "name": "entity-factory",
+    "target": "es5",
+    "module": ["es2017", "dom"],
+    "ignoreCompilerErrors": true,
+    "includeDeclarations": false,
+    "includes": "./docs",
+    "excludeProtected": false,
+    "excludePrivate": false,
+    "mode": "modules",
+    "out": "docs-build",
+    "theme": "markdown",
+    "mdEngine": "gitbook",
+    "stripExternal": false,
+    "exclude": ["**/index*", "**/*.spec.ts", "samples/*", "test/*"],
+    "readme": "README.md",
+    "hideGenerator": "true",
+    "verbose": true,
+    "mdSourceRepo": "https://www.github.com/jcloutz/entity-factory"
+}

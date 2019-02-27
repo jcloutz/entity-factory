@@ -1,3 +1,7 @@
+/**
+ * @module Adapters/Typeorm
+ */
+
 import { Connection, createConnection, DeepPartial, getConnection } from 'typeorm';
 import { BlueprintOptions } from '../../blueprint/BlueprintTypeOption';
 import { DeepEntityPartial } from '../../common/DeepEntityPartial';

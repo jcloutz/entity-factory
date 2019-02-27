@@ -1,4 +1,9 @@
+/**
+ * @module Blueprint
+ */
+
 import * as faker from 'faker';
+
 import { Adapter } from '../adapters/Adapter';
 import { DeepEntityPartial } from '../common/DeepEntityPartial';
 import { EntityFactory } from '../EntityFactory';

@@ -1,3 +1,7 @@
+/**
+ * @module Adapters/Object
+ */
+
 import { BlueprintOptions } from '../../blueprint/BlueprintTypeOption';
 import { EntityObjectType } from '../../common/EntityObjectType';
 import { isFunction } from '../../utils';

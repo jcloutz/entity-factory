@@ -1,4 +1,8 @@
 /**
+ * @module Utils
+ */
+
+/**
  * Get the firstName of an object
  *
  * @param entity
