@@ -1,3 +1,5 @@
+[![Gitpod ready-to-code](https://img.shields.io/badge/Gitpod-ready--to--code-blue?logo=gitpod)](https://gitpod.io/#https://github.com/jcloutz/entity-factory)
+
 # Entity Factory
 
 Entity Factory is a library used for quickly creating fixture data from plain
